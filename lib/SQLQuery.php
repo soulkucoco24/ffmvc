@@ -39,10 +39,10 @@ class SQLQuery{
 
     public function query($query, $singleResult = 0)
     {
-        $this->_result = mysqli_query($this->_db, $query);
-        $result = array();
-        $field = array();
-        $tempResults = array();
-        $numOfFields = mysqli_fie($this->_result);
+//        $this->_result = mysqli_query($this->_db, $query);
+//        $result = array();
+//        $field = array();
+//        $tempResults = array();
+//        $numOfFields = mysqli_fie($this->_result);
     }
 }
