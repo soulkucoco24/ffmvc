@@ -22,6 +22,11 @@ class SQLQuery{
         }
     }
 
+    /**
+     * disconnect db
+     *
+     * @return bool
+     */
     public function disconnect()
     {
         if (mysqli_close($this->_db) != 0) {
@@ -31,18 +36,30 @@ class SQLQuery{
         }
     }
 
-    public function selectAll()
+    /**
+     * select all from table
+     *
+     * @param $table
+     * @return array
+     */
+    public function selectAll($table)
     {
-        $query = 'select * from `'.$this->_table.'`';
+        $query = 'select * from `'.$table.'`';
         return $this->query($query);
     }
 
     public function query($query, $singleResult = 0)
     {
-//        $this->_result = mysqli_query($this->_db, $query);
-//        $result = array();
-//        $field = array();
-//        $tempResults = array();
-//        $numOfFields = mysqli_fie($this->_result);
+        $this->_result = mysqli_query($this->_db, $query);
+        $result = array();
+        while ($arr = mysqli_fetch_assoc($this->_result)) {
+            array_push($result, $arr);
+        }
+        return $result;
+    }
+
+    public function getError()
+    {
+        return mysqli_error($this->_db);
     }
 }

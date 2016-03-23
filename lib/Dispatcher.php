@@ -3,6 +3,11 @@ class Dispatcher{
     protected static $front;
     const URI_REGEXP = '/^\/([^\d\?\/\\][^\/]*?)?(?:\/([^\d\?\/\\][^\/]*?))?(?:\/([^\?]+?))?(?:\/\?.*)?$/s';
 
+    /**
+     * getInstance
+     *
+     * @return Dispatcher
+     */
     public static function getInstance()
     {
         if (!isset(self::$front)) {
@@ -11,6 +16,11 @@ class Dispatcher{
         }
     }
 
+    /**
+     * dispatch
+     *
+     * @return bool
+     */
     public static function dispatch()
     {
         if (!preg_match(self::URI_REGEXP, URI, $urlArray)) {

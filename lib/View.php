@@ -4,6 +4,12 @@ class View{
     protected $_view;
     protected $_action;
 
+    /**
+     * initialize
+     *
+     * @param $view
+     * @param $action
+     */
     public function __construct($view, $action)
     {
         $this->_view = $view;
